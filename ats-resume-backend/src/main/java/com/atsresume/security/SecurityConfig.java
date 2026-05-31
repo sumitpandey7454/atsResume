@@ -22,14 +22,18 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .csrf(csrf -> csrf.disable())
-            .sessionManagement(session ->
-                session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .cors(cors -> cors.configure(http))
+            .sessionManagement(session -> session
+                .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(
                     "/api/ats/check",
+                    "/api/ats/check-file",
+                    "/api/templates/all",
                     "/login/**",
                     "/oauth2/**",
-                    "/api/auth/**"
+                    "/api/auth/health",
+                    "/error"
                 ).permitAll()
                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()

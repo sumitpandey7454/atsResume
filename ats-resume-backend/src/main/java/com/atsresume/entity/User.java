@@ -2,6 +2,8 @@ package com.atsresume.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -11,6 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User {
 
     @Id
@@ -38,6 +41,8 @@ public class User {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
+    @JsonIgnore
+    @ToString.Exclude
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Resume> resumes;
 
