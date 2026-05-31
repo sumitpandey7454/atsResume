@@ -2,12 +2,14 @@ package com.atsresume;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication
+@EnableJpaRepositories(basePackages = "com.atsresume.repository")
+@EntityScan(basePackages = "com.atsresume.entity")
 public class AtsResumeBackendApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(AtsResumeBackendApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(AtsResumeBackendApplication.class, args);
+    }
 }
