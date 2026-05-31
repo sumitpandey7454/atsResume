@@ -2,3 +2,6 @@
 .env
 ats-resume-backend/src/main/resources/application.properties
 *.env
+ats-resume-frontend/.env
+ats-resume-frontend/node_modules
+ats-resume-backend/target
