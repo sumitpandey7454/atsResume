@@ -20,7 +20,7 @@ public class GeminiService {
     private String callGemini(String prompt) {
         try {
             String url = geminiConfig.getApiUrl() +
-                    "/models/gemini-1.5-flash:generateContent?key=" +
+                    "/models/gemini-2.5-flash:generateContent?key=" +
                     geminiConfig.getApiKey();
 
             Map<String, Object> requestBody = Map.of(
