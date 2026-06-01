@@ -171,6 +171,67 @@ public class ResumeService {
                 .atsScore(resume.getAtsScore())
                 .createdAt(resume.getCreatedAt())
                 .updatedAt(resume.getUpdatedAt())
+                .educations(resume.getEducations() != null ?
+                        resume.getEducations().stream().map(e ->
+                                EducationResponse.builder()
+                                        .id(e.getId())
+                                        .degree(e.getDegree())
+                                        .institution(e.getInstitution())
+                                        .board(e.getBoard())
+                                        .startYear(e.getStartYear())
+                                        .endYear(e.getEndYear())
+                                        .grade(e.getGrade())
+                                        .gradeType(e.getGradeType() != null ?
+                                                e.getGradeType().name() : null)
+                                        .build()
+                        ).collect(Collectors.toList()) : null)
+                .projects(resume.getProjects() != null ?
+                        resume.getProjects().stream().map(p ->
+                                ProjectResponse.builder()
+                                        .id(p.getId())
+                                        .title(p.getTitle())
+                                        .description(p.getDescription())
+                                        .techStack(p.getTechStack())
+                                        .projectUrl(p.getProjectUrl())
+                                        .githubUrl(p.getGithubUrl())
+                                        .startDate(p.getStartDate())
+                                        .endDate(p.getEndDate())
+                                        .build()
+                        ).collect(Collectors.toList()) : null)
+                .experiences(resume.getExperiences() != null ?
+                        resume.getExperiences().stream().map(e ->
+                                ExperienceResponse.builder()
+                                        .id(e.getId())
+                                        .companyName(e.getCompanyName())
+                                        .position(e.getPosition())
+                                        .description(e.getDescription())
+                                        .startDate(e.getStartDate())
+                                        .endDate(e.getEndDate())
+                                        .isCurrent(e.getIsCurrent())
+                                        .category(e.getCategory() != null ?
+                                                e.getCategory().name() : null)
+                                        .build()
+                        ).collect(Collectors.toList()) : null)
+                .certifications(resume.getCertifications() != null ?
+                        resume.getCertifications().stream().map(c ->
+                                CertificationResponse.builder()
+                                        .id(c.getId())
+                                        .name(c.getName())
+                                        .issuer(c.getIssuer())
+                                        .issueDate(c.getIssueDate())
+                                        .expiryDate(c.getExpiryDate())
+                                        .credentialUrl(c.getCredentialUrl())
+                                        .build()
+                        ).collect(Collectors.toList()) : null)
+                .skills(resume.getSkills() != null ?
+                        resume.getSkills().stream().map(s ->
+                                SkillResponse.builder()
+                                        .id(s.getId())
+                                        .name(s.getName())
+                                        .category(s.getCategory() != null ?
+                                                s.getCategory().name() : null)
+                                        .build()
+                        ).collect(Collectors.toList()) : null)
                 .build();
     }
 }

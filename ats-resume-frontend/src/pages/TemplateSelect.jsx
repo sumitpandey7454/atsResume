@@ -65,7 +65,7 @@ const TemplateSelect = () => {
           {filtered.map((template) => (
             <div
               key={template.id}
-              onClick={() => handleSelect(template.id)}
+              onClick={() => handleSelect(template)}
               className={`cursor-pointer rounded-2xl overflow-hidden border-2 transition-all duration-200 ${
                 selected === template.id
                   ? 'border-blue-500 shadow-lg scale-105'
