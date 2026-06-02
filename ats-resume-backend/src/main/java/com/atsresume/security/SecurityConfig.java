@@ -30,12 +30,17 @@ public class SecurityConfig {
                     "/api/ats/check",
                     "/api/ats/check-file",
                     "/api/templates/all",
+                    "/api/messages/send",
+                    "/api/auth/health",
                     "/login/**",
                     "/oauth2/**",
-                    "/api/auth/health",
                     "/error"
                 ).permitAll()
-                .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                .requestMatchers(
+                    "/api/admin/**",
+                    "/api/messages/all",
+                    "/api/messages/unread-count"
+                ).hasRole("ADMIN")
                 .anyRequest().authenticated()
             )
             .oauth2Login(oauth2 -> oauth2

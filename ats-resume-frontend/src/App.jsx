@@ -15,7 +15,7 @@ import LinkedInOptimizer from './pages/LinkedInOptimizer'
 import GitHubReadme from './pages/GitHubReadme'
 import Admin from './pages/Admin'
 import ProtectedRoute from './components/common/ProtectedRoute'
-
+import PrivacyPolicy from './pages/PrivacyPolicy'
 function App() {
   return (
     <BrowserRouter>
@@ -59,6 +59,8 @@ function App() {
           <Route path="/admin" element={
             <ProtectedRoute><Admin /></ProtectedRoute>
           } />
+          <Route path="/privacy-policy" element=
+          {<PrivacyPolicy />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

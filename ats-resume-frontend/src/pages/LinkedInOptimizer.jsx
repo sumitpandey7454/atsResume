@@ -2,7 +2,10 @@ import { useState } from 'react'
 import { generateLinkedIn } from '../api/resumeAPI'
 import Navbar from '../components/common/Navbar'
 import toast from 'react-hot-toast'
+import Footer from '../components/common/Footer'
 
+// Wrap page div with flex flex-col min-h-screen
+// Add <Footer /> at the bottom before closing div
 const LinkedInOptimizer = () => {
   const [resumeText, setResumeText] = useState('')
   const [result, setResult] = useState('')

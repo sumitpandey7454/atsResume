@@ -13,7 +13,10 @@ import RoleSelector from '../components/builder/RoleSelector'
 import PageSelector from '../components/builder/PageSelector'
 import AIEnhanceButton from '../components/builder/AIEnhanceButton'
 import toast from 'react-hot-toast'
+import Footer from '../components/common/Footer'
 
+// Wrap page div with flex flex-col min-h-screen
+// Add <Footer /> at the bottom before closing div
 const steps = [
   { id: 1, title: 'Role & Type', icon: '🎯' },
   { id: 2, title: 'Personal', icon: '👤' },

@@ -4,6 +4,10 @@ import Navbar from '../components/common/Navbar'
 import ScoreCard from '../components/ats/ScoreCard'
 import UploadBox from '../components/ats/UploadBox'
 import toast from 'react-hot-toast'
+import Footer from '../components/common/Footer'
+
+// Wrap page div with flex flex-col min-h-screen
+// Add <Footer /> at the bottom before closing div
 
 const ATSChecker = () => {
   const [mode, setMode] = useState('text')

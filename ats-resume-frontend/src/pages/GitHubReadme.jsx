@@ -2,7 +2,10 @@ import { useState } from 'react'
 import { generateGithubReadme } from '../api/resumeAPI'
 import Navbar from '../components/common/Navbar'
 import toast from 'react-hot-toast'
+import Footer from '../components/common/Footer'
 
+// Wrap page div with flex flex-col min-h-screen
+// Add <Footer /> at the bottom before closing div
 const GitHubReadme = () => {
   const [form, setForm] = useState({ name: '', skills: '', projects: '' })
   const [result, setResult] = useState('')

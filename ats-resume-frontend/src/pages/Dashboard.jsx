@@ -1,7 +1,10 @@
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import Navbar from '../components/common/Navbar'
+import Footer from '../components/common/Footer'
 
+// Wrap page div with flex flex-col min-h-screen
+// Add <Footer /> at the bottom before closing div
 const Dashboard = () => {
   const { user } = useAuth()
   const navigate = useNavigate()

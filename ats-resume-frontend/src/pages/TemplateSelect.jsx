@@ -3,7 +3,10 @@ import { useNavigate } from 'react-router-dom'
 import { useResume } from '../context/ResumeContext'
 import Navbar from '../components/common/Navbar'
 import { templateList } from '../data/templateList'
+import Footer from '../components/common/Footer'
 
+// Wrap page div with flex flex-col min-h-screen
+// Add <Footer /> at the bottom before closing div
 const TemplateSelect = () => {
   const navigate = useNavigate()
   const { setSelectedTemplate, updateResumeData } = useResume()

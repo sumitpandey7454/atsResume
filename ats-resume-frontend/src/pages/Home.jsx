@@ -1,13 +1,14 @@
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import Navbar from '../components/common/Navbar'
+import Footer from '../components/common/Footer'
 
 const Home = () => {
   const navigate = useNavigate()
   const { isAuthenticated } = useAuth()
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white flex flex-col">
       <Navbar />
 
       {/* Hero Section */}
@@ -42,7 +43,7 @@ const Home = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-6">
+      <section className="py-20 px-6 flex-1">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
             Everything You Need to Get Hired
@@ -80,10 +81,7 @@ const Home = () => {
         </button>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-800 text-gray-400 py-8 text-center">
-        <p>© 2026 ATS Resume. Built for students, by students.</p>
-      </footer>
+      <Footer />
     </div>
   )
 }
