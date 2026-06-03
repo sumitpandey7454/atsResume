@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+
+  # MySQL Database
+  database:
+    image: mysql:8.0
+    container_name: ats-mysql
+    environment:
+      MYSQL_DATABASE: atsresume
+      MYSQL_ROOT_PASSWORD: root123
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 5
+
+  # Spring Boot Backend
+  backend:
+    build: ./ats-resume-backend
+    container_name: ats-backend
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://database:3306/atsresume
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root123
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      JWT_SECRET: ${JWT_SECRET}
+    depends_on:
+      database:
+        condition: service_healthy
+
+  # React Frontend
+  frontend:
+    build: ./ats-resume-frontend
+    container_name: ats-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+volumes:
+  mysql-data:
