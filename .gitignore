@@ -1,6 +1,5 @@
 /.metadata/
 .env
-
 *.env
 ats-resume-frontend/.env
 ats-resume-frontend/node_modules
