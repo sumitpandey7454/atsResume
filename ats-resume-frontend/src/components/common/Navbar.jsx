@@ -42,6 +42,14 @@ const Navbar = () => {
               >
                 My Resumes
               </button>
+              {user?.role === 'ADMIN' && (
+                <button
+                  onClick={() => navigate('/admin')}
+                  className="text-red-600 hover:text-red-700 text-sm font-medium transition-colors"
+                >
+                  👑 Admin
+                </button>
+              )}
             </>
           )}
         </div>
