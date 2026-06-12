@@ -31,6 +31,8 @@ public class SecurityConfig {
                     "/api/ats/check-file",
                     "/api/templates/all",
                     "/api/messages/send",
+                    "/api/visitors/track",   // ← add
+                    "/api/visitors/heartbeat", // ← add
                     "/api/auth/health",
                     "/login/**",
                     "/oauth2/**",
@@ -39,7 +41,8 @@ public class SecurityConfig {
                 .requestMatchers(
                     "/api/admin/**",
                     "/api/messages/all",
-                    "/api/messages/unread-count"
+                    "/api/messages/unread-count",
+                    "/api/visitors/stats"
                 ).hasRole("ADMIN")
                 .anyRequest().authenticated()
             )

@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 import { AuthProvider } from './context/AuthContext'
-
+import { useAuth } from './context/AuthContext'
+import useVisitorTracking from './hooks/useVisitorTracking'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
@@ -16,17 +17,27 @@ import GitHubReadme from './pages/GitHubReadme'
 import Admin from './pages/Admin'
 import ProtectedRoute from './components/common/ProtectedRoute'
 import PrivacyPolicy from './pages/PrivacyPolicy'
+
+// Separate component to use hooks inside AuthProvider
+const AppContent = () => {
+  const { isAuthenticated } = useAuth()
+  useVisitorTracking(isAuthenticated)
+  return null
+}
+
 function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
         <Toaster position="top-right" />
+        <AppContent />
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/ats-checker" element={<ATSChecker />} />
           <Route path="/oauth2/callback" element={<Login />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
           {/* Protected Routes */}
           <Route path="/dashboard" element={
@@ -59,8 +70,6 @@ function App() {
           <Route path="/admin" element={
             <ProtectedRoute><Admin /></ProtectedRoute>
           } />
-          <Route path="/privacy-policy" element=
-          {<PrivacyPolicy />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

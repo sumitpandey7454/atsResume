@@ -43,22 +43,37 @@ const Admin = () => {
           👑 Admin Dashboard
         </h1>
 
-        {/* Stats */}
+        {/* Stats Cards */}
         {stats && (
-          <div className="grid grid-cols-3 gap-6 mb-8">
-            <div className="bg-white rounded-2xl p-6 shadow-sm text-center">
-              <p className="text-4xl font-bold text-blue-600">{stats.totalUsers}</p>
-              <p className="text-gray-500 mt-2">Total Users</p>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+            <div className="bg-white rounded-2xl p-5 shadow-sm text-center">
+              <p className="text-3xl font-bold text-blue-600">{stats.totalUsers || 0}</p>
+              <p className="text-gray-500 mt-1 text-sm">Total Users</p>
             </div>
-            <div className="bg-white rounded-2xl p-6 shadow-sm text-center">
-              <p className="text-4xl font-bold text-green-600">{stats.totalResumes}</p>
-              <p className="text-gray-500 mt-2">Total Resumes</p>
+            <div className="bg-white rounded-2xl p-5 shadow-sm text-center">
+              <p className="text-3xl font-bold text-green-600">{stats.totalResumes || 0}</p>
+              <p className="text-gray-500 mt-1 text-sm">Total Resumes</p>
             </div>
-            <div className="bg-white rounded-2xl p-6 shadow-sm text-center">
-              <p className="text-4xl font-bold text-purple-600">
+            <div className="bg-white rounded-2xl p-5 shadow-sm text-center">
+              <p className="text-3xl font-bold text-purple-600">
                 {messages.filter(m => !m.isRead).length}
               </p>
-              <p className="text-gray-500 mt-2">Unread Messages</p>
+              <p className="text-gray-500 mt-1 text-sm">Unread Messages</p>
+            </div>
+            <div className="bg-white rounded-2xl p-5 shadow-sm text-center border-2 border-orange-100">
+              <p className="text-3xl font-bold text-orange-600">
+                {stats.totalVisitors || 0}
+              </p>
+              <p className="text-gray-500 mt-1 text-sm">Total Visitors</p>
+            </div>
+            <div className="bg-white rounded-2xl p-5 shadow-sm text-center border-2 border-red-100">
+              <div className="flex items-center justify-center gap-2 mb-1">
+                <div className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></div>
+                <p className="text-3xl font-bold text-red-500">
+                  {stats.liveUsers || 0}
+                </p>
+              </div>
+              <p className="text-gray-500 text-sm">Live Now</p>
             </div>
           </div>
         )}
